@@ -1,4 +1,5 @@
-flask
-flask_sqlalchemy
-flask_login
-werkzeug
+Flask==2.3.2
+pymongo==4.3.3
+flask-wtf==1.1.1
+wtforms==3.0.1
+pandas==2.0.3
