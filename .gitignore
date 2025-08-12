@@ -1,0 +1,36 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+ENV/
+
+# VSCode settings
+.vscode/
+
+# PyCharm settings
+.idea/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Environment variables / secrets
+*.env
+
+# Logs
+*.log
+
+# Flask instance folder
+instance/
+
+# Compiled files
+*.pyo
+*.pyd
+
+# Backup files
+*.bak
+*.swp

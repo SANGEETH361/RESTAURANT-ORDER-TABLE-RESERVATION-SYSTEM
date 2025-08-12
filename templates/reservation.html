@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Reserve Table{% endblock %}
+{% block content %}
+<h2>Reserve a Table</h2>
+<form method="POST" action="{{ url_for('reserve') }}">
+  <label for="customer_name">Your Name:</label>
+  <input type="text" id="customer_name" name="customer_name" required placeholder="Enter your name" />
+  
+  <label for="table_number">Select Table:</label>
+  <select id="table_number" name="table_number" required>
+    {% for table in tables %}
+      <option value="{{ table.table_number }}">Table {{ table.table_number }} - Seats: {{ table.seats }}</option>
+    {% endfor %}
+  </select>
+  
+  <label for="reservation_time">Reservation Time:</label>
+  <input type="datetime-local" id="reservation_time" name="reservation_time" required />
+  
+  <button type="submit">Reserve</button>
+</form>
+
+{% if request.args.get('success') %}
+<p class="success-message">{{ request.args.get('success') }}</p>
+{% endif %}
+{% endblock %}

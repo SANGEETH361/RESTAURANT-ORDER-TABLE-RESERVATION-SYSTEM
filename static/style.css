@@ -1,0 +1,97 @@
+/* style.css */
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0; padding: 0;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  color: #333;
+}
+
+header {
+  background-color: #1e3c72;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0 0 10px 0;
+  font-weight: 700;
+}
+
+nav a {
+  color: #a9d1ff;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+nav a:hover {
+  color: #f8c291;
+}
+
+main {
+  padding: 20px;
+  max-width: 900px;
+  margin: 20px auto;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgb(30 60 114 / 0.25);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 15px 0;
+}
+
+table th, table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+button {
+  background-color: #1e3c72;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #f8c291;
+  color: #1e3c72;
+}
+
+input[type="text"], input[type="number"], input[type="datetime-local"], select {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 12px;
+}
+
+.flash-message, .success-message {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 10px 15px;
+  border-radius: 6px;
+  margin: 15px 0;
+  font-weight: 600;
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+  font-size: 0.9em;
+  background-color: #1e3c72;
+  color: white;
+  margin-top: 40px;
+  border-radius: 0 0 10px 10px;
+}

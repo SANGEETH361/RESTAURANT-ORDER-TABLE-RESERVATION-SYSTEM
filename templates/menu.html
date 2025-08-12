@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}Menu & Order{% endblock %}
+{% block content %}
+<h2>Menu</h2>
+<form method="POST" action="{{ url_for('menu') }}">
+  <label for="customer_name">Your Name:</label>
+  <input type="text" id="customer_name" name="customer_name" required placeholder="Enter your name" />
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Dish</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in menu %}
+      <tr>
+        <td>{{ item.name }}</td>
+        <td>{{ item.category }}</td>
+        <td>${{ '%.2f'|format(item.price) }}</td>
+        <td>
+          <input type="hidden" name="order_item" value="{{ item._id }}">
+          <input type="number" name="quantity" min="0" value="0" style="width: 60px;" />
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <button type="submit">Place Order</button>
+</form>
+
+{% if request.args.get('success') %}
+<p class="success-message">{{ request.args.get('success') }}</p>
+{% endif %}
+{% endblock %}

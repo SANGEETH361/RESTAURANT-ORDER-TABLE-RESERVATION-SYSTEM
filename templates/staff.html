@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block title %}Staff Dashboard{% endblock %}
+{% block content %}
+<h2>Manage Orders</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Customer</th>
+      <th>Order Details</th>
+      <th>Total Price</th>
+      <th>Status</th>
+      <th>Update Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for order in orders %}
+    <tr>
+      <td>{{ order.customer_name }}</td>
+      <td>
+        <ul>
+          {% for item in order.order_details %}
+          <li>{{ item.name }} x{{ item.quantity }} (${{ '%.2f'|format(item.subtotal) }})</li>
+          {% endfor %}
+        </ul>
+      </td>
+      <td>${{ '%.2f'|format(order.total_price) }}</td>
+      <td>{{ order.status }}</td>
+      <td>
+        <form method="POST" style="display:inline;">
+          <input type="hidden" name="order_id" value="{{ order._id }}">
+          <select name="status">
+            <option value="Pending" {% if order.status == 'Pending' %}selected{% endif %}>Pending</option>
+            <option value="Preparing" {% if order.status == 'Preparing' %}selected{% endif %}>Preparing</option>
+            <option value="Completed" {% if order.status == 'Completed' %}selected{% endif %}>Completed</option>
+            <option value="Served" {% if order.status == 'Served' %}selected{% endif %}>Served</option>
+            <option value="Cancelled" {% if order.status == 'Cancelled' %}selected{% endif %}>Cancelled</option>
+          </select>
+          <button type="submit" name="update_order_status">Update</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h2>Manage Tables</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Table Number</th>
+      <th>Seats</th>
+      <th>Availability</th>
+      <th>Update Availability</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for table in tables %}
+    <tr>
+      <td>{{ table.table_number }}</td>
+      <td>{{ table.seats }}</td>
+      <td>{{ "Available" if table.available else "Unavailable" }}</td>
+      <td>
+        <form method="POST" style="display:inline;">
+          <input type="hidden" name="table_number" value="{{ table.table_number }}">
+          <select name="availability">
+            <option value="Available" {% if table.available %}selected{% endif %}>Available</option>
+            <option value="Unavailable" {% if not table.available %}selected{% endif %}>Unavailable</option>
+          </select>
+          <button type="submit" name="update_table_status">Update</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
